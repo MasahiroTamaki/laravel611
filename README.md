@@ -1,3 +1,15 @@
+# laravel611
+
+laravelでCRUD機能＋αの開発。テストを行いHerokuにデプロイする。
+
+**環境**
+- Windows10
+- XAMPP 3.2.4
+- PHP 7.2.19
+- Composer version 1.9.1
+- Laravel Framework 6.11.0
+- 10.3.16-MariaDB/Heroku (本番): Postgres
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
