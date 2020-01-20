@@ -14,7 +14,7 @@
 use App\Http\Controllers\FooController;
 
 Route::get('/', function () {
-  return view('welcome');
+  return view('top');
 });
 
 Route::get('foo', function () {
