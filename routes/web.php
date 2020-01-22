@@ -36,3 +36,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//usersのCRUDに関するルート
+Route::resource('users', 'UserController');
