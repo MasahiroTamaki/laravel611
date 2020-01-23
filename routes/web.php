@@ -39,3 +39,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //usersのCRUDに関するルート
 Route::resource('users', 'UserController');
+
+//postsのCRUDに関するルート
+Route::resource('posts', 'PostController');

@@ -72,7 +72,7 @@ class UserController extends Controller
     // 更新用フォームへ移動
     public function edit(User $user)
     {
-        return view('user.edit', ['user' => $user]);
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -88,7 +88,7 @@ class UserController extends Controller
     {
         $user->name = $request->name;
         $user->save();
-        return redirect('user/'.$user->id);
+        return redirect('users/'.$user->id);
     }
 
     /**

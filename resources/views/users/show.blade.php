@@ -8,13 +8,13 @@
 
   {{-- 編集・削除ボタン --}}
   <div>
-    <a href="{{ url('user/'.$user->id.'edit') }}" class="btn btn-primary">
+    <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-primary">
       {{ __('Edit') }}
     </a>
     {{-- 削除ボタンはコンポーネントを呼び出す --}}
     @component('components.btn-del')
-      @slot('title', 'users') <!-- @slot(変数名, パラメータ) -->
-      @slot('id, $user->id')
+      @slot('table', 'users') {{-- @slot(変数名, パラメータ) --}}
+      @slot('id', $user->id)
     @endcomponent
   </div>
 

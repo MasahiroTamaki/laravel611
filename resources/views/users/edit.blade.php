@@ -1,11 +1,11 @@
 @php
   $title = __('Edit').': '.$user->name;
 @endphp
-@extends('layput.my')
+@extends('layouts.my')
 @section('content')
 <div class="container">
   <h1>{{ $title }}</h1>
-  <form action="{{ url('user/.$user->id') }}" method="post">
+  <form action="{{ url('users/'.$user->id) }}" method="post">
     @csrf {{-- CSRF保護 --}}
     @method('PUT') {{-- 疑似フォームメソッド --}}
     <div class="form-group">
