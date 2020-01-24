@@ -29,5 +29,6 @@
       </tbody>
     </table>
   </div>
+  {{ $posts->links() }} {{-- ページリンク --}}
 </div>
 @endsection

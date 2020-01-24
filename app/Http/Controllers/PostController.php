@@ -15,8 +15,8 @@ class PostController extends Controller
     // 一覧表示
     public function index()
     {
-      // 投稿日の新しい順で記事を一覧表示
-      $posts = Post::latest()->get(); //latest(), oldest() デフォルトでcreated_atカラムによりソートされます。
+      // 投稿日の新しい順で記事を5件ずつ一覧表示
+      $posts = Post::latest()->paginate(5); //latest(), oldest() デフォルトでcreated_atカラムによりソートされます。
       return view('posts.index', ['posts' => $posts]);
     }
 

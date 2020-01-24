@@ -16,7 +16,7 @@ class UserController extends Controller
     //ユーザーの一覧表示
     public function index()
     {
-        $users = User::all();  //すべてのユーザー
+        $users = User::paginate(5);  //すべてのユーザーを5件ずつ表示
         return view('users.index', ['users' => $users]);
         //第一引数には"遷移先のbladeファイル名", 第二引数は"['渡す先での変数名' => 今回渡す変数]"
     }
