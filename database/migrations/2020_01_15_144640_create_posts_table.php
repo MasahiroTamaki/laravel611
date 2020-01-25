@@ -18,7 +18,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->timestamps();
-        });
+            $table->unsignedBigInteger('user_id')->default(1);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // CASCADE usersテーブルでレコードが削除されたら、postsテーブルで関連しているレコードも削除する
+        }); // (ここから2行)usersテーブルのidカラムを参照する、postsテーブルのuser_idカラムを定義
     }
 
     /**

@@ -60,6 +60,8 @@ class UserController extends Controller
     public function show(User $user)
     //「モデル結合ルート」を利用して簡潔に記述するため、引数は$idではなくUser $userとする。
     {
+        // そのユーザーが投稿した記事のうち、最新5件を取得
+        $user->posts = $user->posts()->paginate(5);
         return view('users.show',['user' => $user]);
     }
 
