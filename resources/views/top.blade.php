@@ -8,7 +8,7 @@
 <div class="container">
   <h1>{{ $title }}</h1>
   <p>
-    {{ __('My practice for basic CRUD of laravel 6.11 on Heroku') }}
+    {{ __('My practice for basic CRUD of Laravel 6.11 on Heroku.') }}
   </p>
   <h2>{{ __('Feature') }}</h2>
   <ul>
