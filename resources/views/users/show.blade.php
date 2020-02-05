@@ -7,17 +7,22 @@
   <h1>{{ $title }}</h1>
 
   {{-- 編集・削除ボタン --}}
-  <div>
-    <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-primary">
-      {{ __('Edit') }}
-    </a>
-    {{-- 削除ボタンはコンポーネントを呼び出す --}}
-    @component('components.btn-del')
-      @slot('controller', 'users') {{-- @slot(変数名, パラメータ) --}}
-      @slot('id', $user->id)
-      @slot('name', $user->title)
-    @endcomponent
-  </div>
+  {{-- 管理者のページを表示中の場合は、編集・削除ボタンを表示させない --}}
+  @if (Auth::check() && !Auth::user()->isAdmin($user->id))
+    @can('edit', $user)
+    <div>
+      <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-primary">
+        {{ __('Edit') }}
+      </a>
+      {{-- 削除ボタンはコンポーネントを呼び出す --}}
+      @component('components.btn-del')
+        @slot('controller', 'users') {{-- @slot(変数名, パラメータ) --}}
+        @slot('id', $user->id)
+        @slot('name', $user->title)
+      @endcomponent
+    </div>
+    @endcan
+  @endif
 
   {{-- ユーザー1件の情報 --}}
   <dl class="row">
@@ -41,7 +46,7 @@
           <th>{{ __('Updated') }}</th>
 
           {{-- 記事の編集・削除ボタンのカラム --}}
-          <th></th>
+          @can('edit', $user) <th></th> @endcan
         </tr>
       </thead>
       <tbody>
@@ -55,6 +60,7 @@
             <td>{{ $post->body }}</td>
             <td>{{ $post->created_at }}</td>
             <td>{{ $post->updated_at }}</td>
+            @can('edit', $user)
             <td nowrap>
               <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-primary">
                 {{ __('Edit') }}
@@ -65,6 +71,7 @@
                 @slot('name', $post->title)
               @endcomponent
             </td>
+            @endcan
           </tr>
         @endforeach
       </tbody>

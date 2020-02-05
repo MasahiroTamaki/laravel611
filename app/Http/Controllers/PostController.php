@@ -79,6 +79,7 @@ class PostController extends Controller
   // 更新用フォームへ移動
   public function edit(Post $post)
   {
+    $this->authorize('edit', $post);
     return view('posts.edit', ['post' => $post]);
   }
 
@@ -93,6 +94,7 @@ class PostController extends Controller
   // 完了後、更新した記事のページへ移動
   public function update(Request $request, Post $post)
   {
+    $this->authorize('edit', $post);
     $post->title = $request->title;
     $post->body = $request->body;
     $post->save();
@@ -108,6 +110,7 @@ class PostController extends Controller
   // 一件削除
   public function destroy(Post $post)
   {
+    $this->authorize('edit', $post);
     $post->delete();
     return redirect('posts');
   }

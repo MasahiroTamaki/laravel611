@@ -7,6 +7,7 @@
   <h1 id="post-title>">{{ $title }}</h1>
 
   {{-- 編集・削除ボタン --}}
+  @can('edit', $post)
   <div class="edit">
     <a href="{{ url('posts/'.$post->id.'/edit') }}" class="btn btn-primary">
       {{ __('Edit') }}
@@ -17,8 +18,9 @@
       @slot('name', $post->title)
     @endcomponent
   </div>
+  @endcan
 
-  {{--  記事内容--}}
+  {{-- 記事内容 --}}
   <dl class="row">
     <dt class="col-md-2">{{ __('Author') }}:</dt>
     <dd class="col-md-10">
