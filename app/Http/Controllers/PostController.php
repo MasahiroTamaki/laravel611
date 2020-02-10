@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post; //Postモデルをインポート
+use App\Http\Requests\StorePost;
 
 class PostController extends Controller
 {
@@ -43,12 +44,12 @@ class PostController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param  \Illuminate\Http\Request  $request
+   * @param  \App\Http\Requests\StorePost  $request
    * @return \Illuminate\Http\Response
    */
   // 実際の投稿処理
   // 完了後、投稿した記事のページへ移動
-  public function store(Request $request)
+  public function store(StorePost $request)
   {
     $post = new Post; //新しいインスタンスを作成
     $post->title = $request->title; //それぞれの値を保存して
@@ -86,13 +87,13 @@ class PostController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
+   * @param  \App\Http\Requests\StorePost  $request
+   * @param  \App\Post $post
    * @return \Illuminate\Http\Response
    */
   // 実際の更新処理
   // 完了後、更新した記事のページへ移動
-  public function update(Request $request, Post $post)
+  public function update(StorePost $request, Post $post)
   {
     $this->authorize('edit', $post);
     $post->title = $request->title;
