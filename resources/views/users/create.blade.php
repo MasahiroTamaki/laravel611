@@ -28,16 +28,16 @@
     </div>
     <div class="form-group">
       <label for="password">{{ __('Password') }}</label>
-      <input id="password" type="password" class="form-control" name="password" required>
-    </div>
-    <div class="form-group">
-      <label for="password_confirmation">{{ __('Confirm Password') }}</label>
-      <input id="password_confirmation" type="password" class="form-control @if ($errors->has('email')) is-invalid @endif" name="password_confirmation" required>
+      <input id="password" type="password" class="form-control @if ($errors->has('email')) is-invalid @endif"  name="password" required>
       @if ($errors->has('password'))
         <span class="invalid-feedback" role="alert">
           {{ $errors->first('password') }}
         </span>
       @endif
+    </div>
+    <div class="form-group">
+      <label for="password_confirmation">{{ __('Confirm Password') }}</label>
+      <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required>
     </div>
     <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
   </form>
