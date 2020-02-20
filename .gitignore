@@ -10,3 +10,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/coverage
+# Duskのテストでエラーがあると .env が壊れる場合があるため
+# 設定ファイルを手動でコピーして保存しておく
+.env.mycopy
